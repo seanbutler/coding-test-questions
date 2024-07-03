@@ -4,9 +4,6 @@
 
 int main(int, char **)
 {
-    std::cout << "min max sum from leet-code-tests!\n";
-
-    const int amount = 123;
     const int NUM_VALS = 10;
     const std::array<int, NUM_VALS> input_data = {0, 6, 1, 4, 18, 8, 2, 18, 1, 7};
 
@@ -20,7 +17,7 @@ int main(int, char **)
         {
             min = input_data[n];
         }
-        
+
         if (input_data[n] > max)
         {
             max = input_data[n];
@@ -28,5 +25,6 @@ int main(int, char **)
     }
     sum = min + max;
 
+    std::cout << sum << std::endl;
     return sum;
 }
