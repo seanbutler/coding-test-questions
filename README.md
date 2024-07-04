@@ -1,4 +1,4 @@
-# various little exercises in prep for interviews
+# various little exercises / prep for interviews
 
 ## min max sum
 
