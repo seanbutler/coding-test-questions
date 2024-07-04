@@ -2,9 +2,8 @@
 
 struct list
 {
-    list(int data = 0) 
-    : data_(data)
-    , next_(nullptr)
+    list(int data = 0)
+        : data_(data), next_(nullptr)
     {
     }
 
@@ -12,12 +11,12 @@ struct list
     list *next_;
 };
 
-
-void insert_after(list *L, list *N) {
-    if ( L->next_ == nullptr )
+void insert_after(list *L, list *N)
+{
+    if (L->next_ == nullptr)
     {
         L->next_ = N;
-    }     
+    }
     else
     {
         N->next_ = L->next_;
@@ -25,32 +24,28 @@ void insert_after(list *L, list *N) {
     }
 }
 
-
 void insert_before(list *L, list *N)
 {
     insert_after(N, L);
 }
 
-
 void append(list *L, list *N)
 {
-    while (L->next_ != nullptr) 
+    while (L->next_ != nullptr)
     {
         L = L->next_;
     }
     L->next_ = N;
 }
 
-
-list* new_node(int D=0)
+list *new_node(int D = 0)
 {
     return new list(D);
 }
 
-
 void dump(list *L)
 {
-    while (L != nullptr) 
+    while (L != nullptr)
     {
         std::cout << L->data_ << " ";
         L = L->next_;
@@ -58,10 +53,9 @@ void dump(list *L)
     std::cout << std::endl;
 }
 
-
 int get(list *L, int pos)
 {
-    for (int n=0;n<pos; ++n)
+    for (int n = 0; n < pos; ++n)
     {
         L = L->next_;
     }
@@ -71,7 +65,7 @@ int get(list *L, int pos)
 
 void set(list *L, int pos, int val)
 {
-    for (int n=0;n<pos; ++n)
+    for (int n = 0; n < pos; ++n)
     {
         L = L->next_;
     }
@@ -79,12 +73,11 @@ void set(list *L, int pos, int val)
     L->data_ = val;
 }
 
-
 int length(list *L)
 {
     int ctr = 0;
 
-    while (L != nullptr) 
+    while (L != nullptr)
     {
         L = L->next_;
         ++ctr;
@@ -92,53 +85,38 @@ int length(list *L)
     return ctr;
 }
 
-
 void reverse(list *L) // WIP
 {
-    int len = length(L)-1;
+    int len = length(L);
 
-
-    for (int n=0; n<len/2; ++n) {
-        std::cout << n << " "; 
-        std::cout << get(L, n) << " ";
-        std::cout << get(L, len-n) << std::endl;
+    for (int n = 0; n < (len / 2); ++n)
+    {
+        int tmp;
+        tmp = get(L, n);
+        set(L, n, get(L, (length(L) - 1) - n));
+        set(L, (length(L) - 1) - n, tmp);
     }
 }
-
-
-
 
 int main(int, char **)
 {
     std::cout << "reverse linked list leet-code-tests!\n";
 
-    list * list0 = new_node(0);
+    list *list0 = new_node(0);
 
-    append(list0, new_node(1));
-    append(list0, new_node(2));
+    srand(time(nullptr));
 
-    dump(list0);
-    std::cout << length(list0) << std::endl;
-
-    append(list0, new_node(3));
-    append(list0, new_node(4));
-
-    dump(list0);
-    std::cout << length(list0) << std::endl;
-
-    std::cout << get(list0, 0) << std::endl;
-    std::cout << get(list0, 4) << std::endl;
-    std::cout << get(list0, 3) << std::endl;
-    std::cout << get(list0, 1) << std::endl;
-
-    std::cout << length(list0) << std::endl;
+    int m = rand()%32;
+    for (int n=1; n<m; ++n)
+    {
+        append(list0, new_node(n));
+    }
 
     dump(list0);
 
     reverse(list0);
 
     dump(list0);
-    
+
     return 0;
 }
-
