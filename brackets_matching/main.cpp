@@ -42,18 +42,12 @@ int main(int argc, char **argv)
     std::string result = "";
 
     std::cout << solution("[]");
-
     std::cout << solution("({[]})");
-
     std::cout << solution("");
-
     std::cout << solution("{[}");
-
     std::cout << solution("((()[]))");
-
     std::cout << solution("(brace)");
-
     std::cout << solution("{[]");
 
-
+    
 }

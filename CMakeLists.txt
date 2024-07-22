@@ -14,3 +14,7 @@ add_subdirectory(efficient_janitor)
 add_subdirectory(binary_search_tree)
 add_subdirectory(const_exploration)
 add_subdirectory(brackets_matching)
+add_subdirectory(count_pairs)
+add_subdirectory(image_tweaks)
+add_subdirectory(image_flip)
+
